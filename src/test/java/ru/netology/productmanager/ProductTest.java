@@ -83,4 +83,18 @@ public class ProductTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void NotFoundExceptionWhenDeleteNonExistentId() {
+
+        manager.add(firstBook);
+        manager.add(secondBook);
+        manager.add(smartphone);
+        manager.add(smartphone2);
+
+        Assertions.assertThrows(NotFoundException.class, () -> {
+            manager.deleteById(123454321);
+        });
+
+    }
+
 }
